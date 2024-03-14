@@ -27,13 +27,13 @@ public class TeacherRole extends AnnotatedRoleDefinition {
         return super.entityPermissions();
     }
 
-        @ScreenAccess(screenIds = {
-                "thitracnghiem_ThiSinh.browse",
-                "thitracnghiem_ThiSinh.edit",
-                "help",
-                "aboutWindow",
-                "settings"
-        })
+    @ScreenAccess(screenIds = {
+            "thitracnghiem_ThiSinh.browse",
+            "thitracnghiem_ThiSinh.edit",
+            "help",
+            "aboutWindow",
+            "settings"
+    })
         @Override
         public ScreenPermissionsContainer screenPermissions() {
             return super.screenPermissions();

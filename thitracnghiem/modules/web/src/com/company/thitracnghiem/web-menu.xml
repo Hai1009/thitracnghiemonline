@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<menu-config xmlns="http://schemas.haulmont.com/cuba/menu.xsd">
+    <menu id="application-thitracnghiem" insertBefore="administration" caption="mainMsg://menu_config.application-thitracnghiem">
+        <item screen="thitracnghiem_Khoa.browse" caption="mainMsg://menu_config.thitracnghiem_Khoa.browse"/>
+        <item screen="thitracnghiem_Lop.browse" caption="mainMsg://menu_config.thitracnghiem_Lop.browse"/>
+        <item screen="thitracnghiem_ThiSinh.browse" caption="mainMsg://menu_config.thitracnghiem_ThiSinh.browse"/>
+    </menu>
+</menu-config>

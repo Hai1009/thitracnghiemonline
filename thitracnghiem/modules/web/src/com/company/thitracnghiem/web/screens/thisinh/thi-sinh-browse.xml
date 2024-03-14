@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://thiSinhBrowse"
+        focusComponent="thiSinhsTable"
+        messagesPack="com.company.thitracnghiem.web.screens.thisinh">
+    <data readOnly="true">
+        <collection id="thiSinhsDc"
+                    class="com.company.thitracnghiem.entity.ThiSinh">
+            <view extends="_local">
+                <property name="khoa" view="_minimal"/>
+                <property name="lop" view="_minimal"/>
+            </view>
+            <loader id="thiSinhsDl">
+                <query>
+                    <![CDATA[select e from thitracnghiem_ThiSinh e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="thiSinhsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="thiSinhsTable"
+                dataLoader="thiSinhsDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="thiSinhsTable"
+                    width="100%"
+                    dataContainer="thiSinhsDc">
+            <actions>
+                <action id="excel" type="excel"/>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="maTS" caption="msg://maTS"/>
+                <column id="ten" caption="msg://ten"/>
+                <column id="khoa" caption="msg://khoa"/>
+                <column id="lop" caption="msg://lop"/>
+                <column id="dn" caption="msg://dn"/>
+                <column id="mk" caption="msg://mk"/>
+                <column id="ngaySinh" caption="msg://ns"/>
+                <column id="quyen" caption="msg://q"/>
+                <column id="trangThai" caption="msg://t"/>
+                <column id="mess" caption="msg://mess"/>
+                <column id="hinhAnh" width="60" caption="msg://ha"/>
+            </columns>
+
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="excelBtn" action="thiSinhsTable.excel"/>
+                <button id="createBtn" action="thiSinhsTable.create"/>
+                <button id="editBtn" action="thiSinhsTable.edit"/>
+                <button id="removeBtn" action="thiSinhsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

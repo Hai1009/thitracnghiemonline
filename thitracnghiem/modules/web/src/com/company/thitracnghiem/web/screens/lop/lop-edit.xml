@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://lopEdit"
+        focusComponent="form"
+        messagesPack="com.company.thitracnghiem.web.screens.lop">
+    <data>
+        <instance id="lopDc"
+                  class="com.company.thitracnghiem.entity.Lop">
+            <view extends="_local">
+                <property name="maKhoa" view="_minimal"/>
+            </view>
+            <loader/>
+        </instance>
+    </data>
+    <dialogMode height="AUTO"
+                width="AUTO"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="lopDc">
+            <column width="350px">
+                <textField id="maLopField" property="maLop" editable="false" enable="false" caption="msg://ml"/>
+                <pickerField id="maKhoaField" property="maKhoa" caption="msg://tk">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                        <action id="clear" type="picker_clear"/>
+                    </actions>
+                </pickerField>
+                <textField id="tenLopField" property="tenLop" caption="msg://tl" maxLength="50"/>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

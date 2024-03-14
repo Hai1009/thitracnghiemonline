@@ -1,0 +1,12 @@
+@import "helium-defaults";
+@import "com.company.thitracnghiem/helium-ext-defaults";
+@import "app-components";
+@import "com.company.thitracnghiem/helium-ext";
+@import "com.company.thitracnghiem/helium-ext-dark";
+
+.helium {
+  // include auto-generated app components SCSS
+  @include app_components;
+
+  @include com_company_thitracnghiem-helium-ext;
+}

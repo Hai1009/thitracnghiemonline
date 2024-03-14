@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://lopBrowse"
+        focusComponent="lopsTable"
+        messagesPack="com.company.thitracnghiem.web.screens.lop">
+    <data readOnly="true">
+        <collection id="lopsDc"
+                    class="com.company.thitracnghiem.entity.Lop">
+            <view extends="_local">
+                <property name="maKhoa" view="_minimal"/>
+            </view>
+            <loader id="lopsDl">
+                <query>
+                    <![CDATA[select e from thitracnghiem_Lop e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="lopsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="lopsTable"
+                dataLoader="lopsDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="lopsTable"
+                    width="100%"
+                    dataContainer="lopsDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="maLop" caption="msg://ml"/>
+                <column id="tenLop" caption="msg://tl"/>
+                <column id="maKhoa" caption="msg://tk"/>
+            </columns>
+
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="lopsTable.create"/>
+                <button id="editBtn" action="lopsTable.edit"/>
+                <button id="removeBtn" action="lopsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

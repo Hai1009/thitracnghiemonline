@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://khoaBrowse"
+        focusComponent="khoasTable"
+        messagesPack="com.company.thitracnghiem.web.screens.khoa">
+    <data readOnly="true">
+        <collection id="khoasDc"
+                    class="com.company.thitracnghiem.entity.Khoa">
+            <view extends="_local"/>
+            <loader id="khoasDl">
+                <query>
+                    <![CDATA[select e from thitracnghiem_Khoa e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="khoasTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="khoasTable"
+                dataLoader="khoasDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="khoasTable"
+                    width="100%"
+                    dataContainer="khoasDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="maKhoa" caption="msg://mk"/>
+                <column id="tenKhoa" caption="msg://tk"/>
+            </columns>
+
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="khoasTable.create"/>
+                <button id="editBtn" action="khoasTable.edit"/>
+                <button id="removeBtn" action="khoasTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

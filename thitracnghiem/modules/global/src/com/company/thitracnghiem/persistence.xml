@@ -5,5 +5,7 @@
         <class>com.company.thitracnghiem.entity.ThiSinh</class>
         <class>com.company.thitracnghiem.entity.Khoa</class>
         <class>com.company.thitracnghiem.entity.Lop</class>
+        <class>com.company.thitracnghiem.entity.CauHoi</class>
+        <class>com.company.thitracnghiem.entity.DapAn</class>
     </persistence-unit>
 </persistence>

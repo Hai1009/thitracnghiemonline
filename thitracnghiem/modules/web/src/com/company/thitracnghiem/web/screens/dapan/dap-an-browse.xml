@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://dapAnBrowse"
+        focusComponent="dapAnsTable"
+        messagesPack="com.company.thitracnghiem.web.screens.dapan">
+    <data readOnly="true">
+        <collection id="dapAnsDc"
+                    class="com.company.thitracnghiem.entity.DapAn">
+            <view extends="_local">
+                <property name="maCH" view="_minimal">
+                    <property name="noiDung"/>
+                </property>
+            </view>
+            <loader id="dapAnsDl">
+                <query>
+                    <![CDATA[select e from thitracnghiem_DapAn e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="dapAnsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="dapAnsTable"
+                dataLoader="dapAnsDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="dapAnsTable"
+                    width="100%"
+                    dataContainer="dapAnsDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="maDA" caption="msg://mda"/>
+                <column id="maCH" caption="msg://mch"/>
+                <column id="noiDung" caption="msg://nd"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="dapAnsTable.create"/>
+                <button id="editBtn" action="dapAnsTable.edit"/>
+                <button id="removeBtn" action="dapAnsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

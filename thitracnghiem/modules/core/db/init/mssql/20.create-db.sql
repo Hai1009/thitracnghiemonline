@@ -8,3 +8,7 @@ alter table ThiSinh add constraint FK_THISINH_ON_LOP foreign key (LOP) reference
 create index IDX_THISINH_ON_KHOA on ThiSinh (KHOA)^
 create index IDX_THISINH_ON_LOP on ThiSinh (LOP)^
 -- end THISINH
+-- begin DAPAN
+alter table DapAn add constraint FK_DAPAN_ON_MACH foreign key (MACH) references CauHoi(MaCH)^
+create index IDX_DAPAN_ON_MACH on DapAn (MACH)^
+-- end DAPAN

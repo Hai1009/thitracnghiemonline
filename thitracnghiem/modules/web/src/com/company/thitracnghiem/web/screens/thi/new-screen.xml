@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://newScreen"
+        messagesPack="com.company.thitracnghiem.web.screens.thi">
+    <layout>
+        <vbox spacing="true">
+            <vbox id="mainLayout" spacing="true"/>
+            <button id="submitBtn" caption="Submit" align="TOP_LEFT"/>
+        </vbox>
+    </layout>
+</window>

@@ -4,5 +4,8 @@
         <item screen="thitracnghiem_Khoa.browse" caption="mainMsg://menu_config.thitracnghiem_Khoa.browse"/>
         <item screen="thitracnghiem_Lop.browse" caption="mainMsg://menu_config.thitracnghiem_Lop.browse"/>
         <item screen="thitracnghiem_ThiSinh.browse" caption="mainMsg://menu_config.thitracnghiem_ThiSinh.browse"/>
+        <item screen="thitracnghiem_DapAn.browse" caption="mainMsg://menu_config.thitracnghiem_DapAn.browse"/>
+        <item screen="thitracnghiem_CauHoi.browse" caption="mainMsg://menu_config.thitracnghiem_CauHoi.browse"/>
+        <item screen="thitracnghiem_" caption="mainMsg://menu_config.thitracnghiem_"/>
     </menu>
 </menu-config>

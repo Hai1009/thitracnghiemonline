@@ -35,3 +35,22 @@ create table ThiSinh (
     primary key (MATS)
 )^
 -- end THISINH
+-- begin CAUHOI
+create table CauHoi (
+    MaCH varchar(10),
+    --
+    NoiDung varchar(300),
+    --
+    primary key (MACH)
+)^
+-- end CAUHOI
+-- begin DAPAN
+create table DapAn (
+    MaDA varchar(10),
+    --
+    MaCH varchar(10) not null,
+    NoiDung varchar(300),
+    --
+    primary key (MADA)
+)^
+-- end DAPAN

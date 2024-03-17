@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://dapAnEdit"
+        focusComponent="form"
+        messagesPack="com.company.thitracnghiem.web.screens.dapan">
+    <data>
+        <instance id="dapAnDc"
+                  class="com.company.thitracnghiem.entity.DapAn">
+            <view extends="_local">
+                <property name="maCH" view="_minimal">
+                    <property name="noiDung"/>
+                </property>
+            </view>
+            <loader/>
+        </instance>
+    </data>
+    <dialogMode height="AUTO"
+                width="AUTO"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="dapAnDc">
+            <column width="350px">
+                <textField id="maDAField" property="maDA" editable="false" enable="false" caption="msg://mda"/>
+                <pickerField id="maCHField" property="maCH" caption="msg://mch">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                        <action id="clear" type="picker_clear"/>
+                    </actions>
+                </pickerField>
+                <textField id="noiDungField" property="noiDung" caption="msg://nd"/>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

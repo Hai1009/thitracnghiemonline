@@ -6,6 +6,7 @@
         <item screen="thitracnghiem_ThiSinh.browse" caption="mainMsg://menu_config.thitracnghiem_ThiSinh.browse"/>
         <item screen="thitracnghiem_DapAn.browse" caption="mainMsg://menu_config.thitracnghiem_DapAn.browse"/>
         <item screen="thitracnghiem_CauHoi.browse" caption="mainMsg://menu_config.thitracnghiem_CauHoi.browse"/>
-        <item screen="thitracnghiem_" caption="mainMsg://menu_config.thitracnghiem_"/>
+        <item screen="thitracnghiem_DeThi.browse" caption="mainMsg://menu_config.thitracnghiem_DeThi.browse"/>
+        <item screen="thitracnghiem_StartScreen" caption="mainMsg://menu_config.thitracnghiem_StartScreen.caption"/>
     </menu>
 </menu-config>

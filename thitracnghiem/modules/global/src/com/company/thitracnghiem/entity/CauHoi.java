@@ -14,7 +14,7 @@ import javax.persistence.Table;
 @DdlGeneration(value = DdlGeneration.DbScriptGenerationMode.CREATE_ONLY)
 @Table(name = "CauHoi")
 @Entity(name = "thitracnghiem_CauHoi")
-@NamePattern("%s|maCH")
+@NamePattern("%s|noiDung")
 public class CauHoi extends BaseStringIdEntity {
     private static final long serialVersionUID = -547892516656780157L;
     @Id

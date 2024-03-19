@@ -75,4 +75,8 @@ public class NewScreen extends Screen {
             groupBoxCount++;
         }
     }
+//    @Subscribe("submitBtn")
+//    protected void onButtonClick(Button.ClickEvent event) {
+//
+//    }
 }

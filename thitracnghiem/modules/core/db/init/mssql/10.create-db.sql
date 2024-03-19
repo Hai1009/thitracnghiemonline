@@ -54,3 +54,24 @@ create table DapAn (
     primary key (MADA)
 )^
 -- end DAPAN
+-- begin PHIEUTL
+create table PhieuTL (
+    PhieuTLID varchar(10),
+    --
+    MaCH varchar(10) not null,
+    MaDA varchar(10) not null,
+    MaTS varchar(10) not null,
+    --
+    primary key (PHIEUTLID)
+)^
+-- end PHIEUTL
+-- begin DETHI
+create table DeThi (
+    MaDT varchar(10),
+    --
+    MaCH varchar(10) not null,
+    SoLuong integer,
+    --
+    primary key (MADT)
+)^
+-- end DETHI

@@ -13,10 +13,15 @@ import javax.persistence.*;
 @Entity(name = "thitracnghiem_DapAn")
 @NamePattern("%s|noiDung")
 public class DapAn extends BaseStringIdEntity {
-    private static final long serialVersionUID = -1040411075326712901L;
+    private static final long serialVersionUID = 456890139604980044L;
     @Id
     @Column(name = "MaDA", nullable = false, length = 10)
     private String maDA = generateMaKhoa();
+    private String generateMaKhoa() {
+        return RandomStringUtils.randomAlphanumeric(10);
+    }
+    @Column(name = "DapAnDung")
+    private Boolean dapAnDung;
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "MaCH")
     private CauHoi maCH;
@@ -39,6 +44,14 @@ public class DapAn extends BaseStringIdEntity {
         this.maCH = maCH;
     }
 
+    public Boolean getDapAnDung() {
+        return dapAnDung;
+    }
+
+    public void setDapAnDung(Boolean dapAnDung) {
+        this.dapAnDung = dapAnDung;
+    }
+
     @Override
     public void setId(String id) {
         this.maDA = id;
@@ -55,9 +68,5 @@ public class DapAn extends BaseStringIdEntity {
 
     public void setMaDA(String maDA) {
         this.maDA = maDA;
-    }
-
-    private String generateMaKhoa() {
-        return RandomStringUtils.randomAlphanumeric(10);
     }
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
         xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
-        caption="msg://dapAnBrowse"
+        caption="msg://dapAnBrowse.caption"
         focusComponent="dapAnsTable"
         messagesPack="com.company.thitracnghiem.web.screens.dapan">
     <data readOnly="true">
@@ -40,6 +40,7 @@
                 <column id="maDA" caption="msg://mda"/>
                 <column id="maCH" caption="msg://mch"/>
                 <column id="noiDung" caption="msg://nd"/>
+                <column id="dapAnDung" caption="msg://dad"/>
             </columns>
             <rowsCount/>
             <buttonsPanel id="buttonsPanel"

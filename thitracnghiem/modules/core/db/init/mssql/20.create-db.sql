@@ -12,3 +12,15 @@ create index IDX_THISINH_ON_LOP on ThiSinh (LOP)^
 alter table DapAn add constraint FK_DAPAN_ON_MACH foreign key (MACH) references CauHoi(MaCH)^
 create index IDX_DAPAN_ON_MACH on DapAn (MACH)^
 -- end DAPAN
+-- begin PHIEUTL
+alter table PhieuTL add constraint FK_PHIEUTL_ON_MACH foreign key (MACH) references CauHoi(MaCH)^
+alter table PhieuTL add constraint FK_PHIEUTL_ON_MADA foreign key (MADA) references DapAn(MaDA)^
+alter table PhieuTL add constraint FK_PHIEUTL_ON_MATS foreign key (MATS) references ThiSinh(MaTS)^
+create index IDX_PHIEUTL_ON_MACH on PhieuTL (MACH)^
+create index IDX_PHIEUTL_ON_MADA on PhieuTL (MADA)^
+create index IDX_PHIEUTL_ON_MATS on PhieuTL (MATS)^
+-- end PHIEUTL
+-- begin DETHI
+alter table DeThi add constraint FK_DETHI_ON_MACH foreign key (MACH) references CauHoi(MaCH)^
+create index IDX_DETHI_ON_MACH on DeThi (MACH)^
+-- end DETHI

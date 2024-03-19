@@ -24,3 +24,7 @@ create index IDX_PHIEUTL_ON_MATS on PhieuTL (MATS)^
 alter table DeThi add constraint FK_DETHI_ON_MACH foreign key (MACH) references CauHoi(MaCH)^
 create index IDX_DETHI_ON_MACH on DeThi (MACH)^
 -- end DETHI
+-- begin CAUHOI
+alter table CauHoi add constraint FK_CAUHOI_ON_MADT foreign key (MADT) references DeThi(MaDT)^
+create index IDX_CAUHOI_ON_MADT on CauHoi (MADT)^
+-- end CAUHOI

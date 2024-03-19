@@ -39,6 +39,7 @@ create table ThiSinh (
 create table CauHoi (
     MaCH varchar(10),
     --
+    MaDT varchar(10),
     NoiDung varchar(300),
     --
     primary key (MACH)

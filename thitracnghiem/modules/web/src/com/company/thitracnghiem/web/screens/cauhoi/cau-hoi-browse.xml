@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
         xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
-        caption="msg://cauHoiBrowse"
+        caption="msg://cauHoiBrowse.caption"
         focusComponent="cauHoisTable"
         messagesPack="com.company.thitracnghiem.web.screens.cauhoi">
     <data readOnly="true">
         <collection id="cauHoisDc"
                     class="com.company.thitracnghiem.entity.CauHoi">
-            <view extends="_local"/>
+            <view extends="_local">
+                <property name="maDT" view="_minimal"/>
+            </view>
             <loader id="cauHoisDl">
                 <query>
                     <![CDATA[select e from thitracnghiem_CauHoi e]]>
@@ -33,8 +35,9 @@
                 <action id="remove" type="remove"/>
             </actions>
             <columns>
-                <column id="maCH" caption="msg://mch"/>
-                <column id="noiDung" caption="msg://nd"/>
+                <column id="maCH"/>
+                <column id="maDT"/>
+                <column id="noiDung"/>
             </columns>
             <rowsCount/>
             <buttonsPanel id="buttonsPanel"

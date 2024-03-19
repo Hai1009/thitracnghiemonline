@@ -5,22 +5,22 @@ import com.haulmont.cuba.core.entity.StandardEntity;
 import com.haulmont.cuba.core.global.DdlGeneration;
 import org.apache.commons.lang3.RandomStringUtils;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @DdlGeneration(value = DdlGeneration.DbScriptGenerationMode.CREATE_ONLY)
 @Table(name = "DeThi")
 @Entity(name = "thitracnghiem_DeThi")
 public class DeThi extends BaseStringIdEntity {
-    private static final long serialVersionUID = 7301466720708892465L;
+    private static final long serialVersionUID = 7413979743642832864L;
     @Id
     @Column(name = "MaDT", nullable = false, length = 10)
     private String maDT = generatemaDT();
     private String generatemaDT() {
         return RandomStringUtils.randomAlphanumeric(10);
-    };
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "MaCH")
-    private CauHoi maCH;
+    }
     @Column(name = "SoLuong")
     private Integer soLuong;
 
@@ -30,14 +30,6 @@ public class DeThi extends BaseStringIdEntity {
 
     public void setSoLuong(Integer soLuong) {
         this.soLuong = soLuong;
-    }
-
-    public CauHoi getMaCH() {
-        return maCH;
-    }
-
-    public void setMaCH(CauHoi maCH) {
-        this.maCH = maCH;
     }
 
     @Override

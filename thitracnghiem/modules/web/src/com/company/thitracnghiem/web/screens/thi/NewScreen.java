@@ -11,10 +11,9 @@ import com.haulmont.cuba.gui.screen.Screen;
 import com.haulmont.cuba.gui.screen.Subscribe;
 import com.haulmont.cuba.gui.screen.UiController;
 import com.haulmont.cuba.gui.screen.UiDescriptor;
-import org.apache.commons.collections4.CollectionUtils;
-import org.apache.commons.lang3.RandomUtils;
 
 import javax.inject.Inject;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
@@ -36,17 +35,27 @@ public class NewScreen extends Screen {
     private int groupBoxCount = 0;
 
     private List<CauHoi> loadCauHoisForDeThi(DeThi deThi) {
-        return dataManager.load(CauHoi.class)
+        int numberOfQuestions = deThi.getSoLuong();
+
+        List<CauHoi> allCauHois = dataManager.load(CauHoi.class)
                 .query("select c from thitracnghiem_CauHoi c where c.maDT = :maDT")
                 .parameter("maDT", deThi)
                 .list();
+
+        List<CauHoi> randomCauHois = new ArrayList<>();
+        if (numberOfQuestions <= allCauHois.size()) {
+            List<CauHoi> shuffledCauHois = new ArrayList<>(allCauHois);
+            Collections.shuffle(shuffledCauHois);
+            randomCauHois = shuffledCauHois.subList(0, numberOfQuestions);
+        }
+        return randomCauHois;
     }
 
     private DeThi loadRandomDeThi() {
         List<DeThi> deThis = dataManager.load(DeThi.class).list();
-        int numDeThis = deThis.size();
-        if (numDeThis > 0) {
-            int randomIndex = RandomUtils.nextInt(0, numDeThis);
+        if (!deThis.isEmpty()) {
+            Random random = new Random();
+            int randomIndex = random.nextInt(deThis.size());
             return deThis.get(randomIndex);
         }
         return null;

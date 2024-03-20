@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
-        caption="msg://dapAnEdit.caption"
+        caption="msg://dapAnEdit"
         focusComponent="form"
         messagesPack="com.company.thitracnghiem.web.screens.dapan">
     <data>

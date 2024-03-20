@@ -1,5 +1,6 @@
 package com.company.thitracnghiem.entity;
 
+import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.BaseStringIdEntity;
 import com.haulmont.cuba.core.entity.StandardEntity;
 import com.haulmont.cuba.core.global.DdlGeneration;
@@ -13,6 +14,7 @@ import javax.persistence.Table;
 @DdlGeneration(value = DdlGeneration.DbScriptGenerationMode.CREATE_ONLY)
 @Table(name = "DeThi")
 @Entity(name = "thitracnghiem_DeThi")
+@NamePattern("%s|maDT")
 public class DeThi extends BaseStringIdEntity {
     private static final long serialVersionUID = 7413979743642832864L;
     @Id

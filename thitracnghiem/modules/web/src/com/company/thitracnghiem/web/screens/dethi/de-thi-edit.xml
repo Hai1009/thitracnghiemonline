@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
-        caption="msg://deThiEdit.caption"
+        caption="msg://deThiEdit"
         focusComponent="form"
         messagesPack="com.company.thitracnghiem.web.screens.dethi">
     <data>
@@ -15,8 +15,8 @@
     <layout expand="editActions" spacing="true">
         <form id="form" dataContainer="deThiDc">
             <column width="350px">
-                <textField id="maDTField" property="maDT"/>
-                <textField id="soLuongField" property="soLuong"/>
+                <textField id="maDTField" property="maDT" caption="msg://mdt" editable="false" enable="false"/>
+                <textField id="soLuongField" property="soLuong" caption="msg://sl"/>
             </column>
         </form>
         <hbox id="editActions" spacing="true">

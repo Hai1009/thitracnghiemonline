@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
         xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
-        caption="msg://deThiBrowse.caption"
+        caption="msg://deThiBrowse"
         focusComponent="deThisTable"
         messagesPack="com.company.thitracnghiem.web.screens.dethi">
     <data readOnly="true">
@@ -33,8 +33,8 @@
                 <action id="remove" type="remove"/>
             </actions>
             <columns>
-                <column id="maDT"/>
-                <column id="soLuong"/>
+                <column id="maDT" caption="msg://mdt"/>
+                <column id="soLuong" caption="msg://sl"/>
             </columns>
             <rowsCount/>
             <buttonsPanel id="buttonsPanel"

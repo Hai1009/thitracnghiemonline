@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
         xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
-        caption="msg://cauHoiBrowse.caption"
+        caption="msg://cauHoiBrowse"
         focusComponent="cauHoisTable"
         messagesPack="com.company.thitracnghiem.web.screens.cauhoi">
     <data readOnly="true">
@@ -35,9 +35,9 @@
                 <action id="remove" type="remove"/>
             </actions>
             <columns>
-                <column id="maCH"/>
-                <column id="maDT"/>
-                <column id="noiDung"/>
+                <column id="maCH" caption="msg://mch"/>
+                <column id="maDT" caption="msg://mdt"/>
+                <column id="noiDung" caption="msg://nd"/>
             </columns>
             <rowsCount/>
             <buttonsPanel id="buttonsPanel"

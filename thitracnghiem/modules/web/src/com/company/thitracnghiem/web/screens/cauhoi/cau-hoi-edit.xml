@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
-        caption="msg://cauHoiEdit.caption"
+        caption="msg://cauHoiEdit"
         focusComponent="form"
         messagesPack="com.company.thitracnghiem.web.screens.cauhoi">
     <data>
@@ -12,19 +12,19 @@
             <loader/>
         </instance>
     </data>
-    <dialogMode height="600"
-                width="800"/>
+    <dialogMode height="AUTO"
+                width="AUTO"/>
     <layout expand="editActions" spacing="true">
         <form id="form" dataContainer="cauHoiDc">
             <column width="350px">
-                <textField id="maCHField" property="maCH"/>
-                <pickerField id="maDTField" property="maDT">
+                <textField id="maCHField" property="maCH" caption="msg://mch" editable="false" enable="false"/>
+                <pickerField id="maDTField" property="maDT" caption="msg://mdt">
                     <actions>
                         <action id="lookup" type="picker_lookup"/>
                         <action id="clear" type="picker_clear"/>
                     </actions>
                 </pickerField>
-                <textField id="noiDungField" property="noiDung"/>
+                <textField id="noiDungField" property="noiDung" caption="msg://nd"/>
             </column>
         </form>
         <hbox id="editActions" spacing="true">

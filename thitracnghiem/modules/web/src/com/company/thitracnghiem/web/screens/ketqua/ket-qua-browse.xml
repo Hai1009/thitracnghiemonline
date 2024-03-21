@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://ketQuaBrowse.caption"
+        focusComponent="ketQuasTable"
+        messagesPack="com.company.thitracnghiem.web.screens.ketqua">
+    <data readOnly="true">
+        <collection id="ketQuasDc"
+                    class="com.company.thitracnghiem.entity.KetQua">
+            <view extends="_local">
+                <property name="maDT" view="_minimal"/>
+            </view>
+            <loader id="ketQuasDl">
+                <query>
+                    <![CDATA[select e from thitracnghiem_KetQua e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="ketQuasTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="ketQuasTable"
+                dataLoader="ketQuasDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="ketQuasTable"
+                    width="100%"
+                    dataContainer="ketQuasDc">
+            <actions>
+                <action id="excel" type="excel"/>
+            </actions>
+            <columns>
+                <column id="maKQ"/>
+                <column id="diem"/>
+                <column id="maDT"/>
+                <column id="ngayThi"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="excelBtn" action="ketQuasTable.excel"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

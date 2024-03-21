@@ -38,7 +38,7 @@
             </actions>
             <columns>
                 <column id="maDA" caption="msg://mda"/>
-                <column id="maCH" caption="msg://mch"/>
+                <column id="maCH" caption="msg://mc"/>
                 <column id="noiDung" caption="msg://nd"/>
                 <column id="dapAnDung" caption="msg://dad"/>
             </columns>

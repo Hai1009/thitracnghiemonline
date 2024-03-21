@@ -3,7 +3,11 @@ package com.company.thitracnghiem.web.screens.thi;
 import com.company.thitracnghiem.entity.CauHoi;
 import com.company.thitracnghiem.entity.DapAn;
 import com.company.thitracnghiem.entity.DeThi;
+import com.company.thitracnghiem.entity.KetQua;
 import com.haulmont.cuba.core.global.DataManager;
+import com.haulmont.cuba.core.global.TimeSource;
+import com.haulmont.cuba.gui.Notifications;
+import com.haulmont.cuba.gui.ScreenBuilders;
 import com.haulmont.cuba.gui.UiComponents;
 import com.haulmont.cuba.gui.components.*;
 import com.haulmont.cuba.gui.components.Label;
@@ -33,33 +37,13 @@ public class NewScreen extends Screen {
     private UiComponents uiComponents;
 
     private int groupBoxCount = 0;
+    @Inject
+    private TimeSource timeSource;
 
-    private List<CauHoi> loadCauHoisForDeThi(DeThi deThi) {
-        int numberOfQuestions = deThi.getSoLuong();
+    @Inject
+    private ScreenBuilders screenBuilders;
 
-        List<CauHoi> allCauHois = dataManager.load(CauHoi.class)
-                .query("select c from thitracnghiem_CauHoi c where c.maDT = :maDT")
-                .parameter("maDT", deThi)
-                .list();
-
-        List<CauHoi> randomCauHois = new ArrayList<>();
-        if (numberOfQuestions <= allCauHois.size()) {
-            List<CauHoi> shuffledCauHois = new ArrayList<>(allCauHois);
-            Collections.shuffle(shuffledCauHois);
-            randomCauHois = shuffledCauHois.subList(0, numberOfQuestions);
-        }
-        return randomCauHois;
-    }
-
-    private DeThi loadRandomDeThi() {
-        List<DeThi> deThis = dataManager.load(DeThi.class).list();
-        if (!deThis.isEmpty()) {
-            Random random = new Random();
-            int randomIndex = random.nextInt(deThis.size());
-            return deThis.get(randomIndex);
-        }
-        return null;
-    }
+    private DeThi displayedDeThi; // Đề thi được hiển thị trên màn hình
 
     private void displayAnswersForQuestion(GroupBoxLayout groupBox, CauHoi cauHoi) {
         List<DapAn> answers = loadDapAnsForCauHoi(cauHoi);
@@ -94,14 +78,74 @@ public class NewScreen extends Screen {
 
     @Subscribe
     protected void onInit(InitEvent event) {
-        DeThi deThi = loadRandomDeThi();
-        if (deThi != null) {
-            List<CauHoi> cauHois = loadCauHoisForDeThi(deThi);
+        displayedDeThi = loadRandomDeThi();
+        if (displayedDeThi != null) {
+            List<CauHoi> cauHois = loadCauHoisForDeThi(displayedDeThi);
 
             for (CauHoi cauHoi : cauHois) {
                 createGroupBox(cauHoi);
                 groupBoxCount++;
             }
         }
+    }
+
+    private List<CauHoi> loadCauHoisForDeThi(DeThi deThi) {
+        int numberOfQuestions = deThi.getSoLuong();
+
+        List<CauHoi> allCauHois = dataManager.load(CauHoi.class)
+                .query("select c from thitracnghiem_CauHoi c where c.maDT = :maDT")
+                .parameter("maDT", deThi)
+                .list();
+
+        List<CauHoi> randomCauHois = new ArrayList<>();
+        if (numberOfQuestions <= allCauHois.size()) {
+            List<CauHoi> shuffledCauHois = new ArrayList<>(allCauHois);
+            Collections.shuffle(shuffledCauHois);
+            randomCauHois = shuffledCauHois.subList(0, numberOfQuestions);
+        }
+        return randomCauHois;
+    }
+
+    private DeThi loadRandomDeThi() {
+        List<DeThi> deThis = dataManager.load(DeThi.class).list();
+        if (!deThis.isEmpty()) {
+            Random random = new Random();
+            int randomIndex = random.nextInt(deThis.size());
+            return deThis.get(randomIndex);
+        }
+        return null;
+    }
+
+    @Subscribe("submitBtn")
+    protected void onSubmitBtnClick(Button.ClickEvent event) {
+        int diem = 0;
+        for (Component component : mainLayout.getComponents()) {
+            if (component instanceof GroupBoxLayout) {
+                GroupBoxLayout groupBox = (GroupBoxLayout) component;
+                for (Component innerComponent : groupBox.getComponents()) {
+                    if (innerComponent instanceof RadioButtonGroup) {
+                        RadioButtonGroup<DapAn> radioButtonGroup = (RadioButtonGroup<DapAn>) innerComponent;
+                        DapAn selectedAnswer = radioButtonGroup.getValue();
+                        if (selectedAnswer != null && selectedAnswer.getDapAnDung() != null && selectedAnswer.getDapAnDung()) {
+                            diem++; // Tăng điểm nếu đáp án được chọn là đúng
+                        }
+                    }
+                }
+            }
+        }
+
+        // Lưu kết quả vào cơ sở dữ liệu
+        if (displayedDeThi != null) {
+            KetQua ketQua = dataManager.create(KetQua.class);
+            ketQua.setDiem(diem);
+            ketQua.setMaDT(displayedDeThi);
+
+            ketQua.setNgayThi(timeSource.currentTimestamp());
+            dataManager.commit(ketQua);
+        }
+
+        screenBuilders.screen(this)
+                .withScreenClass(KqScreen.class)
+                .show();
     }
 }

@@ -76,3 +76,15 @@ create table DeThi (
     primary key (MADT)
 )^
 -- end DETHI
+-- begin KETQUA
+create table KetQua (
+    MaKQ varchar(10),
+    --
+    Diem integer,
+    MaDT varchar(10) not null,
+    MaTS varchar(10) not null,
+    NgayThi datetime2,
+    --
+    primary key (MAKQ)
+)^
+-- end KETQUA

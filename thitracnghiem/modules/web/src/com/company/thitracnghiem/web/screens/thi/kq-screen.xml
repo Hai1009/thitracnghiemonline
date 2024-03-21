@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://kqScreen"
+        messagesPack="com.company.thitracnghiem.web.screens.thi">
+    <layout>
+        <vbox height="AUTO" width="AUTO" align="BOTTOM_CENTER"><label value="CHÚC MỪNG BẠN ĐÃ THI XONG BÀI TRẮC NGHIỆM"/></vbox>
+        <vbox height="50" width="AUTO" align="MIDDLE_CENTER"><label value="ĐÂY LÀ SỐ ĐIỂM CỦA BẠN"/></vbox>
+        <vbox height="AUTO" width="AUTO" align="TOP_CENTER"><label id="resultLabel"/></vbox>
+        <vbox><button id="exitButton" caption="Thoát" align="MIDDLE_CENTER"/></vbox>
+    </layout>
+</window>

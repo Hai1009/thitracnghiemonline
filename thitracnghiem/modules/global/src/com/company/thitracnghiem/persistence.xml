@@ -10,5 +10,6 @@
         <class>com.company.thitracnghiem.entity.key.DeThiCompKey</class>
         <class>com.company.thitracnghiem.entity.DeThi</class>
         <class>com.company.thitracnghiem.entity.CauHoi</class>
+        <class>com.company.thitracnghiem.entity.KetQua</class>
     </persistence-unit>
 </persistence>

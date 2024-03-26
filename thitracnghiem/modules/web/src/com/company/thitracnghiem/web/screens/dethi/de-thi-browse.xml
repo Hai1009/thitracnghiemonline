@@ -35,6 +35,7 @@
             <columns>
                 <column id="maDT" caption="msg://mdt"/>
                 <column id="soLuong" caption="msg://sl"/>
+                <column id="thoiLuongThi" caption="msg://tl"/>
             </columns>
             <rowsCount/>
             <buttonsPanel id="buttonsPanel"

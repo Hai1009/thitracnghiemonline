@@ -17,6 +17,7 @@ import com.haulmont.cuba.gui.screen.UiController;
 import com.haulmont.cuba.gui.screen.UiDescriptor;
 
 import javax.inject.Inject;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -87,6 +88,7 @@ public class NewScreen extends Screen {
                 groupBoxCount++;
             }
         }
+        calculateRemainingTime();
     }
 
     private List<CauHoi> loadCauHoisForDeThi(DeThi deThi) {
@@ -154,23 +156,37 @@ public class NewScreen extends Screen {
     @Inject
     protected Timer countdownTimer;
 
-    private int remainingTimeInSeconds = 1800; // 30 phút
+    private int remainingTimeInSeconds;
 
     @Subscribe
     protected void onBeforeShow(BeforeShowEvent event) {
-        updateCountdownTextField();
-        countdownTimer.start();
+        calculateRemainingTime(); // Calculate the initial remaining time
+        updateCountdownTextField(); // Update the countdown text field
+        countdownTimer.start(); // Start the timer to update UI every second
     }
 
-    @Subscribe
-    public void onTimerTick(Timer source) {
-        if (remainingTimeInSeconds > 0) {
-            remainingTimeInSeconds--;
-            updateCountdownTextField();
-        }else{
-            submitAndCalculateScore();
-            countdownTimer.stop();
+    private void calculateRemainingTime() {
+        // Assuming displayedDeThi is properly initialized with the exam data
+        if (displayedDeThi != null && displayedDeThi.getThoiLuongThi() != null) {
+            // Extract hours, minutes, and seconds from the duration of the exam
+            LocalTime thoiLuong = displayedDeThi.getThoiLuongThi().toLocalTime();
+            int hours = thoiLuong.getHour();
+            int minutes = thoiLuong.getMinute();
+            int seconds = thoiLuong.getSecond();
+
+            remainingTimeInSeconds = hours * 3600 + minutes * 60 + seconds;
+        } else {
+            remainingTimeInSeconds = 0;
         }
+    }
+
+    private void updateCountdownTextField() {
+        long hours = remainingTimeInSeconds / 3600;
+        long minutes = (remainingTimeInSeconds % 3600) / 60;
+        long seconds = remainingTimeInSeconds % 60;
+
+        String formattedTime = String.format("%02d:%02d:%02d", hours, minutes, seconds);
+        countdownTextField.setValue(formattedTime);
     }
 
     protected void submitAndCalculateScore() {
@@ -191,11 +207,14 @@ public class NewScreen extends Screen {
     }
 
     @Subscribe
-    private void updateCountdownTextField() {
-        long minutes = remainingTimeInSeconds / 60;
-        long seconds = remainingTimeInSeconds % 60;
-
-        String formattedTime = String.format("%02d:%02d", minutes, seconds);
-        countdownTextField.setValue(formattedTime);
+    public void onTimerTick(Timer source) {
+        if (remainingTimeInSeconds > 0) {
+            remainingTimeInSeconds--; // Decrease remaining time by 1 second
+            updateCountdownTextField(); // Update the countdown text field
+        } else {
+            // If remaining time is zero or negative, stop the timer
+            countdownTimer.stop();
+            submitAndCalculateScore(); // Submit and calculate score
+        }
     }
 }

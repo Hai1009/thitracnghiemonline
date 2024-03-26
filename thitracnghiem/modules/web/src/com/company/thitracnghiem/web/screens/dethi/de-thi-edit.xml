@@ -10,13 +10,14 @@
             <loader/>
         </instance>
     </data>
-    <dialogMode height="600"
-                width="800"/>
+    <dialogMode height="AUTO"
+                width="AUTO"/>
     <layout expand="editActions" spacing="true">
         <form id="form" dataContainer="deThiDc">
             <column width="350px">
                 <textField id="maDTField" property="maDT" caption="msg://mdt" editable="false" enable="false"/>
                 <textField id="soLuongField" property="soLuong" caption="msg://sl"/>
+                <timeField id="thoiLuongThi" property="thoiLuongThi" caption="msg://tl" resolution="SEC"/>
             </column>
         </form>
         <hbox id="editActions" spacing="true">

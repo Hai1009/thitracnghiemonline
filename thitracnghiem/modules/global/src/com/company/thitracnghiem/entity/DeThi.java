@@ -6,10 +6,9 @@ import com.haulmont.cuba.core.entity.StandardEntity;
 import com.haulmont.cuba.core.global.DdlGeneration;
 import org.apache.commons.lang3.RandomStringUtils;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.sql.Time;
+import java.util.Date;
 
 @DdlGeneration(value = DdlGeneration.DbScriptGenerationMode.CREATE_ONLY)
 @Table(name = "DeThi")
@@ -23,8 +22,20 @@ public class DeThi extends BaseStringIdEntity {
     private String generatemaDT() {
         return RandomStringUtils.randomAlphanumeric(10);
     }
+
     @Column(name = "SoLuong")
     private Integer soLuong;
+
+    @Column(name = "ThoiLuongThi")
+    private Time thoiLuongThi;
+
+    public Time getThoiLuongThi() {
+        return thoiLuongThi;
+    }
+
+    public void setThoiLuongThi(Time thoiLuongThi) {
+        this.thoiLuongThi = thoiLuongThi;
+    }
 
     public Integer getSoLuong() {
         return soLuong;

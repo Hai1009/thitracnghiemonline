@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://chiTietScreen.caption"
+        messagesPack="com.company.thitracnghiem.web.screens.thi">
+    <layout>
+        <vbox height="AUTO" width="AUTO" align="BOTTOM_CENTER"><label value="CHI TIẾT ĐỀ THI"/></vbox>
+        <vbox height="50" width="AUTO" align="MIDDLE_CENTER"></vbox>
+        <vbox spacing="true"><button id="exitButton" caption="Thoát" align="MIDDLE_CENTER"/></vbox>
+    </layout>
+</window>

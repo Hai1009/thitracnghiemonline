@@ -30,6 +30,9 @@ public class KqScreen extends Screen {
     @Inject
     private Screens screens;
 
+    @Inject
+    private ScreenBuilders screenBuilders;
+
     private KetQua ketQua(){
         return  dataManager.load(KetQua.class)
                 .query("SELECT kq FROM thitracnghiem_KetQua kq ORDER BY kq.ngayThi DESC").one();
@@ -45,4 +48,10 @@ public class KqScreen extends Screen {
         screens.removeAll();
     }
 
+    @Subscribe("chitiet")
+    protected void onchitietClick(Button.ClickEvent event) {
+        screenBuilders.screen(this)
+                .withScreenClass(ChiTietScreen.class)
+                .show();
+    }
 }

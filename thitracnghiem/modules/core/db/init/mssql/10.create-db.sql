@@ -70,7 +70,6 @@ create table PhieuTL (
 create table DeThi (
     MaDT varchar(10),
     --
-    MaCH varchar(10) not null,
     SoLuong integer,
     --
     primary key (MADT)

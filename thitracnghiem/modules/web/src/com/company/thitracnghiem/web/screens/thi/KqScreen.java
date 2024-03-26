@@ -32,7 +32,7 @@ public class KqScreen extends Screen {
 
     private KetQua ketQua(){
         return  dataManager.load(KetQua.class)
-                .query("SELECT kq FROM thitracnghiem_KetQua kq").one();
+                .query("SELECT kq FROM thitracnghiem_KetQua kq ORDER BY kq.ngayThi DESC").one();
     }
 
     @Subscribe

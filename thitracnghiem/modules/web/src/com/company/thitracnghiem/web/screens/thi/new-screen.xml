@@ -2,8 +2,12 @@
 <window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
         caption="msg://newScreen"
         messagesPack="com.company.thitracnghiem.web.screens.thi">
+    <timers>
+        <timer id="countdownTimer" autostart="true" onTimer="onTimerTick" delay="1000" repeating="true"/>
+    </timers>
     <layout>
         <vbox spacing="true">
+            <textField id="countdownTextField" width="200px" editable="false" enable="false"/>
             <vbox id="mainLayout" spacing="true"/>
             <button id="submitBtn" caption="Submit" align="TOP_LEFT"/>
         </vbox>

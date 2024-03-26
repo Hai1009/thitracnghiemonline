@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CubaProjectState">
+    <option name="hasState" value="true" />
+    <option name="cubaModelState">
+      <CubaModelState>
+        <option name="repositories">
+          <list>
+            <RepositoryModelState>
+              <option name="url" value="https://repo.cuba-platform.com/content/groups/work" />
+              <option name="user" value="cuba" />
+              <option name="pass" value="3r6+CXYTcUs=" />
+              <option name="stateVersion" value="2" />
+            </RepositoryModelState>
+          </list>
+        </option>
+        <option name="appComponents">
+          <list>
+            <DependencyModelState>
+              <option name="group" value="com.haulmont.cuba" />
+              <option name="name" value="cuba-global" />
+              <option name="version" value="7.2.20" />
+            </DependencyModelState>
+            <DependencyModelState>
+              <option name="group" value="com.haulmont.addon.helium" />
+              <option name="name" value="helium-global" />
+              <option name="version" value="0.4.1" />
+            </DependencyModelState>
+          </list>
+        </option>
+        <option name="artifactGroup" value="com.company.thitracnghiem" />
+        <option name="artifactVersion" value="0.1" />
+        <option name="artifactSnapshot" value="true" />
+        <option name="tomcatDir" value="E:\Cuba\thitracnghiemonline\thitracnghiem/deploy/tomcat" />
+        <option name="gradleVersion" value="5.6.4" />
+        <option name="oracleSystemCredentials">
+          <map>
+            <entry key="_MAIN_">
+              <value>
+                <OracleSystemCredentialsModelState>
+                  <option name="systemUser" value="system" />
+                  <option name="systemPassword" value="manager" />
+                </OracleSystemCredentialsModelState>
+              </value>
+            </entry>
+          </map>
+        </option>
+        <option name="gradlePluginJarPath" value="C:\Users\Lenovo\.gradle\caches\modules-2\files-2.1\com.haulmont.gradle\cuba-plugin\7.2.20\c22ef0d0ab91de2d36409996ef36251c9eb5476d\cuba-plugin-7.2.20.jar" />
+        <option name="projectPath" value="E:\Cuba\thitracnghiemonline\thitracnghiem" />
+      </CubaModelState>
+    </option>
+    <option name="dbArtifacts">
+      <map>
+        <entry key="com.haulmont.cuba" value="C:\Users\Lenovo\.gradle\caches\modules-2\files-2.1\com.haulmont.cuba\cuba-core\7.2.20\3acf13f3d022fc9bb608e466eb3ca5eeee99c696\cuba-core-7.2.20-db.zip" />
+      </map>
+    </option>
+  </component>
+</project>

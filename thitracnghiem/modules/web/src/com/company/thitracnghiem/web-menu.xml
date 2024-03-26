@@ -8,7 +8,5 @@
         <item screen="thitracnghiem_CauHoi.browse" caption="mainMsg://menu_config.thitracnghiem_CauHoi.browse"/>
         <item screen="thitracnghiem_DeThi.browse" caption="mainMsg://menu_config.thitracnghiem_DeThi.browse"/>
         <item screen="thitracnghiem_StartScreen" caption="mainMsg://menu_config.thitracnghiem_StartScreen.caption"/>
-        <item screen="thitracnghiem_KetQua.browse" caption="mainMsg://menu_config.thitracnghiem_KetQua.browse"/>
-        <item screen="thitracnghiem_KqScreen" caption="mainMsg://menu_config.thitracnghiem_KqScreen"/>
     </menu>
 </menu-config>

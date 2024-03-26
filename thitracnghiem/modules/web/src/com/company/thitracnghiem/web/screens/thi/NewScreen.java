@@ -148,4 +148,54 @@ public class NewScreen extends Screen {
                 .withScreenClass(KqScreen.class)
                 .show();
     }
+    @Inject
+    private TextField<String> countdownTextField;
+
+    @Inject
+    protected Timer countdownTimer;
+
+    private int remainingTimeInSeconds = 1800; // 30 phút
+
+    @Subscribe
+    protected void onBeforeShow(BeforeShowEvent event) {
+        updateCountdownTextField();
+        countdownTimer.start();
+    }
+
+    @Subscribe
+    public void onTimerTick(Timer source) {
+        if (remainingTimeInSeconds > 0) {
+            remainingTimeInSeconds--;
+            updateCountdownTextField();
+        }else{
+            submitAndCalculateScore();
+            countdownTimer.stop();
+        }
+    }
+
+    protected void submitAndCalculateScore() {
+        int diem = 0;
+        if (displayedDeThi != null) {
+            KetQua ketQua = dataManager.create(KetQua.class);
+            ketQua.setDiem(diem);
+            ketQua.setMaDT(displayedDeThi);
+
+            ketQua.setNgayThi(timeSource.currentTimestamp());
+            dataManager.commit(ketQua);
+        }
+
+        // Chuyển sang màn hình kết quả
+        screenBuilders.screen(this)
+                .withScreenClass(KqScreen.class)
+                .show();
+    }
+
+    @Subscribe
+    private void updateCountdownTextField() {
+        long minutes = remainingTimeInSeconds / 60;
+        long seconds = remainingTimeInSeconds % 60;
+
+        String formattedTime = String.format("%02d:%02d", minutes, seconds);
+        countdownTextField.setValue(formattedTime);
+    }
 }

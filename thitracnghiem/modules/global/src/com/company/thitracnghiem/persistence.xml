@@ -6,7 +6,6 @@
         <class>com.company.thitracnghiem.entity.Khoa</class>
         <class>com.company.thitracnghiem.entity.Lop</class>
         <class>com.company.thitracnghiem.entity.DapAn</class>
-        <class>com.company.thitracnghiem.entity.PhieuTL</class>
         <class>com.company.thitracnghiem.entity.key.DeThiCompKey</class>
         <class>com.company.thitracnghiem.entity.DeThi</class>
         <class>com.company.thitracnghiem.entity.CauHoi</class>

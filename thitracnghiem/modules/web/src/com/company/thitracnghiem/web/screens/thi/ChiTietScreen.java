@@ -1,6 +1,5 @@
 package com.company.thitracnghiem.web.screens.thi;
 
-import com.haulmont.cuba.gui.ScreenBuilders;
 import com.haulmont.cuba.gui.Screens;
 import com.haulmont.cuba.gui.components.Button;
 import com.haulmont.cuba.gui.screen.Screen;

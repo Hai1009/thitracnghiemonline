@@ -10,5 +10,6 @@
         <class>com.company.thitracnghiem.entity.DeThi</class>
         <class>com.company.thitracnghiem.entity.CauHoi</class>
         <class>com.company.thitracnghiem.entity.KetQua</class>
+        <class>com.company.thitracnghiem.entity.PhieuTL</class>
     </persistence-unit>
 </persistence>

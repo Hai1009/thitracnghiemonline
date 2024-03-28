@@ -1,20 +1,15 @@
 package com.company.thitracnghiem.web.screens.thi;
 
-import com.company.thitracnghiem.entity.CauHoi;
-import com.company.thitracnghiem.entity.DapAn;
-import com.company.thitracnghiem.entity.DeThi;
-import com.company.thitracnghiem.entity.KetQua;
+import com.company.thitracnghiem.entity.*;
 import com.haulmont.cuba.core.global.DataManager;
+import com.haulmont.cuba.core.global.Metadata;
 import com.haulmont.cuba.core.global.TimeSource;
 import com.haulmont.cuba.gui.Notifications;
 import com.haulmont.cuba.gui.ScreenBuilders;
 import com.haulmont.cuba.gui.UiComponents;
 import com.haulmont.cuba.gui.components.*;
 import com.haulmont.cuba.gui.components.Label;
-import com.haulmont.cuba.gui.screen.Screen;
-import com.haulmont.cuba.gui.screen.Subscribe;
-import com.haulmont.cuba.gui.screen.UiController;
-import com.haulmont.cuba.gui.screen.UiDescriptor;
+import com.haulmont.cuba.gui.screen.*;
 
 import javax.inject.Inject;
 import java.time.LocalTime;
@@ -38,6 +33,7 @@ public class NewScreen extends Screen {
     private UiComponents uiComponents;
 
     private int groupBoxCount = 0;
+
     @Inject
     private TimeSource timeSource;
 
@@ -45,6 +41,8 @@ public class NewScreen extends Screen {
     private ScreenBuilders screenBuilders;
 
     private DeThi displayedDeThi; // Đề thi được hiển thị trên màn hình
+
+    private List<CauHoi> randomCauHois;
 
     private void displayAnswersForQuestion(GroupBoxLayout groupBox, CauHoi cauHoi) {
         List<DapAn> answers = loadDapAnsForCauHoi(cauHoi);
@@ -82,6 +80,7 @@ public class NewScreen extends Screen {
         displayedDeThi = loadRandomDeThi();
         if (displayedDeThi != null) {
             List<CauHoi> cauHois = loadCauHoisForDeThi(displayedDeThi);
+            randomCauHois = new ArrayList<>(cauHois);
 
             for (CauHoi cauHoi : cauHois) {
                 createGroupBox(cauHoi);
@@ -144,12 +143,34 @@ public class NewScreen extends Screen {
 
             ketQua.setNgayThi(timeSource.currentTimestamp());
             dataManager.commit(ketQua);
+
+            // Lưu MaCH và MaDT của các câu hỏi vào bảng PhieuTL
+            createPhieuTL(randomCauHois, displayedDeThi);
         }
 
         screenBuilders.screen(this)
                 .withScreenClass(KqScreen.class)
                 .show();
     }
+    private void createPhieuTL(List<CauHoi> cauHois, DeThi deThi) {
+        for (CauHoi cauHoi : cauHois) {
+            // Lấy danh sách đáp án cho câu hỏi
+            List<DapAn> dapAns = loadDapAnsForCauHoi(cauHoi);
+
+            for (DapAn dapAn : dapAns) {
+                // Tạo mới một phiếu TL và thiết lập thông tin cho nó
+                PhieuTL phieuTL = dataManager.create(PhieuTL.class);
+                phieuTL.setMaDT(deThi); // Lưu mã đề thi vào phiếu thử
+                phieuTL.setMaCH(cauHoi); // Lưu mã câu hỏi vào phiếu thử
+                phieuTL.setMaDA(dapAn); // Lưu mã đáp án vào phiếu thử
+                phieuTL.setNgayThi(timeSource.currentTimestamp()); // Thiết lập ngày thi
+
+                // Lưu phiếu TL vào cơ sở dữ liệu
+                dataManager.commit(phieuTL);
+            }
+        }
+    }
+
     @Inject
     private TextField<String> countdownTextField;
 

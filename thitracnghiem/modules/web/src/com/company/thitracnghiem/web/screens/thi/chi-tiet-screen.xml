@@ -3,8 +3,8 @@
         caption="msg://chiTietScreen.caption"
         messagesPack="com.company.thitracnghiem.web.screens.thi">
     <layout>
-        <vbox height="AUTO" width="AUTO" align="BOTTOM_CENTER"><label value="CHI TIẾT ĐỀ THI"/></vbox>
-        <vbox height="50" width="AUTO" align="MIDDLE_CENTER"></vbox>
-        <vbox spacing="true"><button id="exitButton" caption="Thoát" align="MIDDLE_CENTER"/></vbox>
+        <vbox height="AUTO" width="AUTO" align="TOP_CENTER"><label value="CHI TIẾT ĐỀ THI"/></vbox>
+        <vbox id="mainLayout" spacing="true" align="TOP_LEFT"/>
+        <vbox spacing="true" height="AUTO" width="AUTO" align="BOTTOM_CENTER"><button id="exitButton" caption="Thoát" align="MIDDLE_CENTER"/></vbox>
     </layout>
 </window>

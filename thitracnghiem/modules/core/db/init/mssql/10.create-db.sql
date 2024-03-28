@@ -76,3 +76,16 @@ create table KetQua (
     primary key (MAKQ)
 )^
 -- end KETQUA
+-- begin PHIEUTL
+create table PhieuTL (
+    MaPTL varchar(10),
+    --
+    DapAnDaChon varchar(50),
+    MaCH varchar(10) not null,
+    MaDA varchar(10) not null,
+    MaDT varchar(10) not null,
+    NgayThi datetime2,
+    --
+    primary key (MAPTL)
+)^
+-- end PHIEUTL

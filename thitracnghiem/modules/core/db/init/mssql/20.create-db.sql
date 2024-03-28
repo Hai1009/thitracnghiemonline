@@ -26,3 +26,11 @@ alter table KetQua add constraint FK_KETQUA_ON_MATS foreign key (MATS) reference
 create index IDX_KETQUA_ON_MADT on KetQua (MADT)^
 create index IDX_KETQUA_ON_MATS on KetQua (MATS)^
 -- end KETQUA
+-- begin PHIEUTL
+alter table PhieuTL add constraint FK_PHIEUTL_ON_MACH foreign key (MACH) references CauHoi(MaCH)^
+alter table PhieuTL add constraint FK_PHIEUTL_ON_MADA foreign key (MADA) references DapAn(MaDA)^
+alter table PhieuTL add constraint FK_PHIEUTL_ON_MADT foreign key (MADT) references DeThi(MaDT)^
+create index IDX_PHIEUTL_ON_MACH on PhieuTL (MACH)^
+create index IDX_PHIEUTL_ON_MADA on PhieuTL (MADA)^
+create index IDX_PHIEUTL_ON_MADT on PhieuTL (MADT)^
+-- end PHIEUTL

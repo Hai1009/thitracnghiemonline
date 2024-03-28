@@ -16,7 +16,7 @@ public class CauHoi extends BaseStringIdEntity {
     private static final long serialVersionUID = -1242403573732770675L;
     @Id
     @Column(name = "MaCH", nullable = false, length = 10)
-    private String maCH= generatemaCH();
+    private String maCH = generatemaCH();
     private String generatemaCH() {
         return RandomStringUtils.randomAlphanumeric(10);
     }
